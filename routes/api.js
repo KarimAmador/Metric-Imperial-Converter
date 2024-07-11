@@ -13,7 +13,8 @@ module.exports = function (app) {
       answer: convertHandler.getNum(req.query.num || '1.12/.65mi'),
       boolean: Boolean(convertHandler.getNum(req.query.num || '1.12/.65mi')),
       returnUnit: convertHandler.getReturnUnit(convertHandler.getUnit(req.query.num)),
-      unitName: convertHandler.spellOutUnit(convertHandler.getUnit(req.query.num))
+      unitName: convertHandler.spellOutUnit(convertHandler.getUnit(req.query.num)),
+      conversion: convertHandler.convert(1, 'l')
     })
   })
 };
