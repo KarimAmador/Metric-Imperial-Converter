@@ -1,5 +1,10 @@
 function ConvertHandler() {
   const validInput = /^((?:(?:\d+)?\.?(?:[1-9])(?:\d+)?)(?:\/(?:\d+\.?)?(?:[1-9])(?:\d+)?)?)?([A-Za-z]+)$/;
+  const units = {
+    km: {name: 'kilometers', returnUnit: 'mi'}, mi: {name: 'miles', returnUnit: 'km'},
+    kg: {name: 'kilograms', returnUnit: 'lbs'}, lbs: {name: 'pounds', returnUnit: 'kg'},
+    l: {name: 'liters', returnUnit: 'gal'}, gal: {name: 'gallons', returnUnit: 'L'}
+  }
 
   this.getNum = function(input) {
     let result;
@@ -21,6 +26,7 @@ function ConvertHandler() {
   
   this.getReturnUnit = function(initUnit) {
     let result;
+    result = units[initUnit.toLowerCase()].returnUnit;
     
     return result;
   };
