@@ -10,7 +10,13 @@ function ConvertHandler() {
     let result;
     result = input.match(validInput);
 
-    if (result) result = eval(result[1]);
+    if (result) {
+      if (result[1]) {
+        result = eval(result[1])
+      } else {
+        result = 1
+      }
+    };
     
     return result;
   };
@@ -33,7 +39,7 @@ function ConvertHandler() {
 
   this.spellOutUnit = function(unit) {
     let result;
-    result = units[unit].name;
+    result = units[unit.toLowerCase()].name;
     
     return result;
   };
