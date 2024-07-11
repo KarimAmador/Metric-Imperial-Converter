@@ -12,7 +12,10 @@ function ConvertHandler() {
   
   this.getUnit = function(input) {
     let result;
-    
+    result = input.match(validInput);
+
+    if (result) result = result[2];
+
     return result;
   };
   
