@@ -33,6 +33,7 @@ function ConvertHandler() {
 
   this.spellOutUnit = function(unit) {
     let result;
+    result = units[unit].name;
     
     return result;
   };

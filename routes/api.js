@@ -12,7 +12,8 @@ module.exports = function (app) {
     res.json({
       answer: convertHandler.getNum(req.query.num || '1.12/.65mi'),
       boolean: Boolean(convertHandler.getNum(req.query.num || '1.12/.65mi')),
-      returnUnit: convertHandler.getReturnUnit(convertHandler.getUnit(req.query.num))
+      returnUnit: convertHandler.getReturnUnit(convertHandler.getUnit(req.query.num)),
+      unitName: convertHandler.spellOutUnit(convertHandler.getUnit(req.query.num))
     })
   })
 };
