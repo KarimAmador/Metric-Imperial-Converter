@@ -72,6 +72,7 @@ function ConvertHandler() {
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     let result;
+    result = `${initNum} ${initUnit} converts to ${returnNum} ${returnUnit}`;
     
     return result;
   };
