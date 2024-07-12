@@ -1,5 +1,5 @@
 function ConvertHandler() {
-  const validInput = /^((?:(?:\d+)?\.?(?:[1-9])(?:\d+)?)(?:\/(?:\d+\.?)?(?:[1-9])(?:\d+)?)?)?([A-Za-z]+)$/;
+  const validInput = /(^(?:(?:\d+)?\.?(?:[1-9])(?:\d+)?)(?:\/(?:\d+\.?)?(?:[1-9])(?:\d+)?)?)?([A-Za-z]+)$/;
   const units = {
     km: {name: 'kilometers', returnUnit: 'mi'}, mi: {name: 'miles', returnUnit: 'km'},
     kg: {name: 'kilograms', returnUnit: 'lbs'}, lbs: {name: 'pounds', returnUnit: 'kg'},
@@ -8,15 +8,19 @@ function ConvertHandler() {
 
   this.getNum = function(input) {
     let result;
+    if (input.match(/^[A-Za-z]+$/)) {
+      return result = 1;
+    }
+
     result = input.match(validInput);
 
     if (result) {
       if (result[1]) {
-        result = eval(result[1])
+        result = eval(result[1]);
       } else {
-        result = 1
+        result = null;
       }
-    };
+    }
     
     return result;
   };
@@ -84,7 +88,7 @@ function ConvertHandler() {
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     let result;
-    result = `${initNum} ${initUnit} converts to ${returnNum} ${returnUnit}`;
+    result = `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
     
     return result;
   };
