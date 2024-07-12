@@ -25,7 +25,13 @@ function ConvertHandler() {
     let result;
     result = input.match(validInput);
 
-    if (result) result = result[2];
+    if (result) {
+      units[result[2].toLowerCase()]
+      ? result[2].length === 1
+        ? result = result[2].toUpperCase()
+        : result = result[2].toLowerCase()
+      : result = null
+    };
 
     return result;
   };
